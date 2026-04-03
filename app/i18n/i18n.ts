@@ -12,8 +12,8 @@ const resources = {
   en: {
     translation: {
       app: {
-        title: "Citizen Complaint Guide",
-        subtitle: "Understand your rights & how to file a complaint",
+        title: "SIMPLY LAW",
+        subtitle: "Your Guide to Legal Rights and Complaints",
       },
       header: {
         searchPlaceholder: "Search rights, laws, or help...",
@@ -58,7 +58,7 @@ const resources = {
       },
       pages: {
         home: {
-          title: "Welcome to the Citizen Complaint Guide",
+          title: "Welcome to SIMPLY LAW",
           p1: "This tool helps you quickly understand your basic rights, learn key laws in simple language, and follow clear steps to file a complaint if something goes wrong.",
           p2: "Use the sidebar to switch between Men, Women, Children, and Senior Citizens, or jump directly to emergency contacts. The Emergency SOS button at the top will always show you national helpline numbers.",
         },

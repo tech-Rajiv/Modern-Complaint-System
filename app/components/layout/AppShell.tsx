@@ -28,10 +28,10 @@ export function AppShell({
       <Sidebar />
 
       <MobileSidebar
-        activeCategory={null}
+        // activeCategory={null}
         isOpen={isMobileSidebarOpen}
         onClose={() => setIsMobileSidebarOpen(false)}
-        onCategoryChange={() => {}}
+        // onCategoryChange={() => {}}
       />
 
       <main className="flex min-h-screen flex-1 flex-col">

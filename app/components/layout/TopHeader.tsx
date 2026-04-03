@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n/i18n";
+import Image from "next/image";
 
 type TopHeaderProps = {
   searchQuery: string;
@@ -18,7 +19,7 @@ export function TopHeader({
 
   return (
     <header className="sticky top-0 z-20 border-b border-[var(--color-border-subtle)] bg-[var(--color-surface)]/80 px-4 py-3 backdrop-blur-md md:px-8">
-      <div className="mx-auto flex max-w-5xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -32,16 +33,13 @@ export function TopHeader({
               <span className="block h-[1.5px] w-4 rounded-full bg-slate-700" />
             </span>
           </button>
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--color-primary)] text-sm font-semibold text-white md:hidden">
-            PW
-          </div>
-          <div>
-            <p className="text-sm font-semibold tracking-tight text-slate-900">
-              {t("app.title")}
-            </p>
-            <p className="text-xs text-[var(--color-muted)]">
-              {t("app.subtitle")}
-            </p>
+          <div className="flex items-center gap-2">
+          <Image src="/logo/logo.png" alt="SIMPLY LAW" width={24} height={24} />
+          <div className="logo-text">
+          <p className="text-xl font-bold tracking-tight">
+            SIMPLY<span className="text-blue-400">LAW</span>
+          </p>
+        </div>
           </div>
         </div>
 

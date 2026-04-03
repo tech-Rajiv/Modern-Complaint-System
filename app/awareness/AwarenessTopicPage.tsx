@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 import { AppShell } from "../components/layout/AppShell";
 import {
   AWARENESS_TOPICS,
@@ -16,13 +17,14 @@ type AwarenessTopicPageProps = {
 function AwarenessTabs() {
   const pathname = usePathname();
   const base = "/awareness";
+  const { t } = useTranslation();
 
   const tabs: { id: AwarenessTopicId; label: string }[] = [
-    { id: "forest", label: "Forest & Wildlife" },
-    { id: "roads", label: "Roads & Traffic" },
-    { id: "rivers", label: "Rivers & Water Bodies" },
-    { id: "buildings", label: "Buildings & Fire Safety" },
-    { id: "safety", label: "Public Safety & Crowd Spaces" },
+    { id: "forest", label: t("awareness.tabs.forest") },
+    { id: "roads", label: t("awareness.tabs.roads") },
+    { id: "rivers", label: t("awareness.tabs.rivers") },
+    { id: "buildings", label: t("awareness.tabs.buildings") },
+    { id: "safety", label: t("awareness.tabs.safety") },
   ];
 
   return (
@@ -50,23 +52,25 @@ function AwarenessTabs() {
 
 export function AwarenessTopicPage({ topicId }: AwarenessTopicPageProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation();
 
   const topic =
     AWARENESS_TOPICS.find((t) => t.id === topicId) ?? AWARENESS_TOPICS[0];
 
   const query = searchQuery.toLowerCase().trim();
 
+  const measuresText = topic.measuresKeys.map((k) => t(k));
+  const stepsText = topic.complaintStepKeys.map((k) => t(k));
+
   const visibleMeasures =
     query.length === 0
-      ? topic.measures
-      : topic.measures.filter((m) => m.toLowerCase().includes(query));
+      ? measuresText
+      : measuresText.filter((m) => m.toLowerCase().includes(query));
 
   const visibleSteps =
     query.length === 0
-      ? topic.complaintSteps
-      : topic.complaintSteps.filter((s) =>
-          s.toLowerCase().includes(query),
-        );
+      ? stepsText
+      : stepsText.filter((s) => s.toLowerCase().includes(query));
 
   return (
     <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
@@ -77,19 +81,19 @@ export function AwarenessTopicPage({ topicId }: AwarenessTopicPageProps) {
           <div className="grid gap-4 md:grid-cols-[2fr,1fr]">
             <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-5 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-                Awareness
+                {t("awareness.title")}
               </p>
               <h1 className="mt-1 text-lg font-semibold text-slate-900">
-                {topic.label}
+                {t(topic.labelKey)}
               </h1>
               <p className="mt-2 text-sm text-[var(--color-muted)]">
-                {topic.summary}
+                {t(topic.summaryKey)}
               </p>
             </div>
 
             <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-4 shadow-sm">
               <h2 className="mb-2 text-sm font-semibold text-slate-900">
-                Important Numbers
+                {t("awareness.importantNumbers")}
               </h2>
               <ul className="space-y-2 text-sm">
                 {topic.helplines.map((h) => (
@@ -113,10 +117,10 @@ export function AwarenessTopicPage({ topicId }: AwarenessTopicPageProps) {
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-4 shadow-sm">
               <h2 className="mb-2 text-sm font-semibold text-slate-900">
-                Awareness Measures
+                {t("awareness.measuresTitle")}
               </h2>
               <p className="mb-3 text-xs text-[var(--color-muted)]">
-                Everyday actions you can take to prevent harm in this area.
+                {t("awareness.measuresSubtitle")}
               </p>
               <ul className="space-y-2 text-sm">
                 {visibleMeasures.map((m, idx) => (
@@ -133,11 +137,10 @@ export function AwarenessTopicPage({ topicId }: AwarenessTopicPageProps) {
 
             <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-4 shadow-sm">
               <h2 className="mb-2 text-sm font-semibold text-slate-900">
-                Complaint Steps (if needed)
+                {t("awareness.complaintTitle")}
               </h2>
               <p className="mb-3 text-xs text-[var(--color-muted)]">
-                Follow these steps if you need to escalate and file a formal
-                complaint.
+                {t("awareness.complaintSubtitle")}
               </p>
               <ol className="space-y-4">
                 {visibleSteps.map((step, index) => (

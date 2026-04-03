@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 type ChatWidgetProps = {
   label?: string;
@@ -9,6 +10,7 @@ type ChatWidgetProps = {
 export function ChatWidget({ label = "Chat" }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ export function ChatWidget({ label = "Chat" }: ChatWidgetProps) {
                     {label}
                   </p>
                   <p className="text-[10px] text-[var(--color-muted)]">
-                    Ask anything about this page
+                    {t("chat.askAnything")}
                   </p>
                 </div>
               </div>
@@ -61,7 +63,7 @@ export function ChatWidget({ label = "Chat" }: ChatWidgetProps) {
                 type="text"
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
-                placeholder="Type your message..."
+                placeholder={t("chat.placeholder")}
                 className="flex-1 rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-3 py-1.5 text-xs outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-soft)]"
               />
               <button
@@ -69,7 +71,7 @@ export function ChatWidget({ label = "Chat" }: ChatWidgetProps) {
                 className="rounded-xl bg-[var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white shadow-sm disabled:opacity-50"
                 disabled={!chatInput.trim()}
               >
-                Send
+                {t("chat.send")}
               </button>
             </form>
           </div>

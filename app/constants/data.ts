@@ -12,159 +12,150 @@ export type Law = {
 
 export type CategoryData = {
   id: CategoryKey;
-  label: string;
-  heroSubtitle: string;
-  primaryHelplineLabel: string;
+  labelKey: string;
+  heroSubtitleKey: string;
+  primaryHelplineLabelKey: string;
   primaryHelplineNumber: string;
   helplines: Helpline[];
-  rights: string[];
-  complaintSteps: string[];
-  laws: Law[];
+  rightsKeys: string[];
+  complaintStepKeys: string[];
+  laws: { codeKey: string; descriptionKey: string }[];
 };
 
 export const CATEGORY_DATA: CategoryData[] = [
   {
     id: "women",
-    label: "Women",
-    heroSubtitle: "You are in the Women's Rights Section.",
-    primaryHelplineLabel: "Women’s Helpline",
+    labelKey: "categories.women.label",
+    heroSubtitleKey: "categories.women.heroSubtitle",
+    primaryHelplineLabelKey: "categories.women.primaryHelplineLabel",
     primaryHelplineNumber: "1091",
     helplines: [
       { label: "Women’s Helpline", number: "1091" },
       { label: "Domestic Violence Helpline", number: "181" },
     ],
-    rights: [
-      "Right to free legal aid in eligible cases.",
-      "Right to privacy and dignity while filing complaints.",
-      "Right to register a Zero FIR at any police station.",
+    rightsKeys: [
+      "categories.women.rights.0",
+      "categories.women.rights.1",
+      "categories.women.rights.2",
     ],
-    complaintSteps: [
-      "Document the incident: dates, times, locations, and people involved.",
-      "Contact a women-specific helpline (e.g., 1091 or 181) and describe the issue.",
-      "Visit the nearest police station to file an FIR with supporting documents.",
-      "Request a copy of the FIR and keep the FIR number safely.",
+    complaintStepKeys: [
+      "categories.women.complaintSteps.0",
+      "categories.women.complaintSteps.1",
+      "categories.women.complaintSteps.2",
+      "categories.women.complaintSteps.3",
     ],
     laws: [
       {
-        code: "Protection of Women from Domestic Violence Act",
-        description:
-          "Provides protection and relief for women facing physical, emotional, or economic abuse.",
+        codeKey: "categories.women.laws.0.code",
+        descriptionKey: "categories.women.laws.0.description",
       },
       {
-        code: "Maternity Benefit Act",
-        description:
-          "Ensures paid leave and job protection during and after pregnancy.",
+        codeKey: "categories.women.laws.1.code",
+        descriptionKey: "categories.women.laws.1.description",
       },
     ],
   },
   {
     id: "men",
-    label: "Men",
-    heroSubtitle: "You are in the Men's Rights Section.",
-    primaryHelplineLabel: "General Police Helpline",
+    labelKey: "categories.men.label",
+    heroSubtitleKey: "categories.men.heroSubtitle",
+    primaryHelplineLabelKey: "categories.men.primaryHelplineLabel",
     primaryHelplineNumber: "100",
     helplines: [
       { label: "Police (Emergency)", number: "100" },
       { label: "National Helpline", number: "112" },
     ],
-    rights: [
-      "Right to be treated with dignity and without discrimination.",
-      "Right to legal representation during criminal proceedings.",
-      "Right to seek protection if facing abuse or threats.",
+    rightsKeys: [
+      "categories.men.rights.0",
+      "categories.men.rights.1",
+      "categories.men.rights.2",
     ],
-    complaintSteps: [
-      "Write down what happened with dates, times, and witnesses.",
-      "Call the police helpline or visit your nearest police station.",
-      "File a written complaint or FIR describing the incident clearly.",
-      "Collect a copy of the FIR and follow up on the investigation status.",
+    complaintStepKeys: [
+      "categories.men.complaintSteps.0",
+      "categories.men.complaintSteps.1",
+      "categories.men.complaintSteps.2",
+      "categories.men.complaintSteps.3",
     ],
     laws: [
       {
-        code: "Code of Criminal Procedure",
-        description:
-          "Governs how investigations, arrests, and trials are conducted.",
+        codeKey: "categories.men.laws.0.code",
+        descriptionKey: "categories.men.laws.0.description",
       },
       {
-        code: "Indian Penal Code (general offences)",
-        description:
-          "Defines common criminal offences like assault, cheating, and criminal intimidation.",
+        codeKey: "categories.men.laws.1.code",
+        descriptionKey: "categories.men.laws.1.description",
       },
     ],
   },
   {
     id: "child",
-    label: "Children",
-    heroSubtitle: "You are in the Child Protection Section.",
-    primaryHelplineLabel: "Child Helpline",
+    labelKey: "categories.child.label",
+    heroSubtitleKey: "categories.child.heroSubtitle",
+    primaryHelplineLabelKey: "categories.child.primaryHelplineLabel",
     primaryHelplineNumber: "1098",
     helplines: [
       { label: "Child Helpline", number: "1098" },
       { label: "Police (Emergency)", number: "100" },
     ],
-    rights: [
-      "Right to protection from abuse, exploitation, and neglect.",
-      "Right to free and compulsory education up to a certain age.",
-      "Right to a child-friendly process while recording statements.",
+    rightsKeys: [
+      "categories.child.rights.0",
+      "categories.child.rights.1",
+      "categories.child.rights.2",
     ],
-    complaintSteps: [
-      "Ensure the child's immediate safety and remove them from danger.",
-      "Call Child Helpline 1098 or the local police.",
-      "Provide details about the child, guardian (if any), and the incident.",
-      "Cooperate with Child Welfare Committee or authorities for further action.",
+    complaintStepKeys: [
+      "categories.child.complaintSteps.0",
+      "categories.child.complaintSteps.1",
+      "categories.child.complaintSteps.2",
+      "categories.child.complaintSteps.3",
     ],
     laws: [
       {
-        code: "Protection of Children from Sexual Offences (POCSO) Act",
-        description:
-          "Provides child-friendly procedures for reporting and prosecuting sexual offences.",
+        codeKey: "categories.child.laws.0.code",
+        descriptionKey: "categories.child.laws.0.description",
       },
       {
-        code: "Right of Children to Free and Compulsory Education Act",
-        description:
-          "Guarantees free and compulsory education for children in the specified age group.",
+        codeKey: "categories.child.laws.1.code",
+        descriptionKey: "categories.child.laws.1.description",
       },
     ],
   },
   {
     id: "senior",
-    label: "Senior Citizens",
-    heroSubtitle: "You are in the Senior Citizens' Rights Section.",
-    primaryHelplineLabel: "Senior Citizen Helpline",
+    labelKey: "categories.senior.label",
+    heroSubtitleKey: "categories.senior.heroSubtitle",
+    primaryHelplineLabelKey: "categories.senior.primaryHelplineLabel",
     primaryHelplineNumber: "14567",
     helplines: [
       { label: "Senior Citizen Helpline", number: "14567" },
       { label: "Police (Emergency)", number: "100" },
     ],
-    rights: [
-      "Right to live with dignity and without abuse.",
-      "Right to claim maintenance from children or relatives.",
-      "Right to approach tribunals for protection of life and property.",
+    rightsKeys: [
+      "categories.senior.rights.0",
+      "categories.senior.rights.1",
+      "categories.senior.rights.2",
     ],
-    complaintSteps: [
-      "Write down incidents of neglect, abuse, or financial exploitation.",
-      "Call the Senior Citizen Helpline 14567 or contact the local police.",
-      "File a complaint or approach the Maintenance Tribunal, if available.",
-      "Keep copies of complaints, notices, and orders for your records.",
+    complaintStepKeys: [
+      "categories.senior.complaintSteps.0",
+      "categories.senior.complaintSteps.1",
+      "categories.senior.complaintSteps.2",
+      "categories.senior.complaintSteps.3",
     ],
     laws: [
       {
-        code:
-          "Maintenance and Welfare of Parents and Senior Citizens Act",
-        description:
-          "Allows senior citizens to claim maintenance from children or relatives.",
+        codeKey: "categories.senior.laws.0.code",
+        descriptionKey: "categories.senior.laws.0.description",
       },
       {
-        code: "General criminal law protections",
-        description:
-          "Protects senior citizens from physical, verbal, and economic abuse.",
+        codeKey: "categories.senior.laws.1.code",
+        descriptionKey: "categories.senior.laws.1.description",
       },
     ],
   },
 ];
 
-export const SIDEBAR_ITEMS = CATEGORY_DATA.map(({ id, label }) => ({
+export const SIDEBAR_ITEMS = CATEGORY_DATA.map(({ id, labelKey }) => ({
   key: id,
-  label,
+  labelKey,
 }));
 
 export const HEADER_TABS = [
@@ -193,29 +184,28 @@ export type AwarenessTopicId =
 
 export type AwarenessTopic = {
   id: AwarenessTopicId;
-  label: string;
-  summary: string;
-  measures: string[];
-  complaintSteps: string[];
+  labelKey: string;
+  summaryKey: string;
+  measuresKeys: string[];
+  complaintStepKeys: string[];
   helplines: Helpline[];
 };
 
 export const AWARENESS_TOPICS: AwarenessTopic[] = [
   {
     id: "forest",
-    label: "Forest & Wildlife",
-    summary:
-      "Illegal cutting of trees, forest fires, and wildlife poaching harm the environment and future generations.",
-    measures: [
-      "Do not start fires or leave burning materials in forest areas.",
-      "Avoid littering plastic, glass, or other waste in green zones.",
-      "Report illegal tree cutting, hunting, or suspicious activity immediately.",
+    labelKey: "awareness.topics.forest.label",
+    summaryKey: "awareness.topics.forest.summary",
+    measuresKeys: [
+      "awareness.topics.forest.measures.0",
+      "awareness.topics.forest.measures.1",
+      "awareness.topics.forest.measures.2",
     ],
-    complaintSteps: [
-      "Note the exact location, time, and what you observed in the forest area.",
-      "If safe, take photos or short videos showing damage or illegal activity.",
-      "Call the forest department or local environmental helpline and share the details.",
-      "File a written complaint with the nearest forest office or police station, attaching any evidence.",
+    complaintStepKeys: [
+      "awareness.topics.forest.complaintSteps.0",
+      "awareness.topics.forest.complaintSteps.1",
+      "awareness.topics.forest.complaintSteps.2",
+      "awareness.topics.forest.complaintSteps.3",
     ],
     helplines: [
       { label: "Forest Department (local)", number: "1926" },
@@ -224,19 +214,18 @@ export const AWARENESS_TOPICS: AwarenessTopic[] = [
   },
   {
     id: "roads",
-    label: "Roads & Traffic",
-    summary:
-      "Potholes, broken signals, and unsafe driving conditions can cause serious accidents.",
-    measures: [
-      "Follow traffic rules, speed limits, and wear seat belts/helmets.",
-      "Avoid blocking emergency lanes or pedestrian crossings.",
-      "Report damaged roads, open manholes, or broken traffic signals.",
+    labelKey: "awareness.topics.roads.label",
+    summaryKey: "awareness.topics.roads.summary",
+    measuresKeys: [
+      "awareness.topics.roads.measures.0",
+      "awareness.topics.roads.measures.1",
+      "awareness.topics.roads.measures.2",
     ],
-    complaintSteps: [
-      "Capture clear photos of the road issue, including nearby landmarks.",
-      "Note the road name, intersection, or closest building for accurate location.",
-      "Raise a complaint with your city’s municipal body or road authority portal.",
-      "If there is an immediate risk to life, call the police or traffic helpline.",
+    complaintStepKeys: [
+      "awareness.topics.roads.complaintSteps.0",
+      "awareness.topics.roads.complaintSteps.1",
+      "awareness.topics.roads.complaintSteps.2",
+      "awareness.topics.roads.complaintSteps.3",
     ],
     helplines: [
       { label: "Traffic Police Helpline", number: "103" },
@@ -245,19 +234,18 @@ export const AWARENESS_TOPICS: AwarenessTopic[] = [
   },
   {
     id: "rivers",
-    label: "Rivers & Water Bodies",
-    summary:
-      "Dumping waste, chemicals, or sewage into rivers and lakes damages ecosystems and drinking water.",
-    measures: [
-      "Never throw garbage, puja materials, or plastics into rivers or lakes.",
-      "Avoid using harsh detergents or chemicals near open water bodies.",
-      "Join or support local clean-up drives to keep water bodies healthy.",
+    labelKey: "awareness.topics.rivers.label",
+    summaryKey: "awareness.topics.rivers.summary",
+    measuresKeys: [
+      "awareness.topics.rivers.measures.0",
+      "awareness.topics.rivers.measures.1",
+      "awareness.topics.rivers.measures.2",
     ],
-    complaintSteps: [
-      "Record what kind of pollution you see (solid waste, sewage, chemical discharge, etc.).",
-      "Note the date, time, and exact location on the river or lake bank.",
-      "Inform the local pollution control board or municipal body with photos, if possible.",
-      "If you see tanker or industrial discharge, share vehicle/industry details with authorities.",
+    complaintStepKeys: [
+      "awareness.topics.rivers.complaintSteps.0",
+      "awareness.topics.rivers.complaintSteps.1",
+      "awareness.topics.rivers.complaintSteps.2",
+      "awareness.topics.rivers.complaintSteps.3",
     ],
     helplines: [
       { label: "Pollution Control Board (state)", number: "1800-11-0181" },
@@ -266,19 +254,18 @@ export const AWARENESS_TOPICS: AwarenessTopic[] = [
   },
   {
     id: "buildings",
-    label: "Buildings & Fire Safety",
-    summary:
-      "Unauthorized construction, blocked fire exits, and faulty wiring can lead to disasters.",
-    measures: [
-      "Ensure stairways, exits, and corridors in your building are not blocked.",
-      "Check that fire extinguishers and alarms are visible and regularly serviced.",
-      "Avoid overloading sockets or using poor-quality electrical extensions.",
+    labelKey: "awareness.topics.buildings.label",
+    summaryKey: "awareness.topics.buildings.summary",
+    measuresKeys: [
+      "awareness.topics.buildings.measures.0",
+      "awareness.topics.buildings.measures.1",
+      "awareness.topics.buildings.measures.2",
     ],
-    complaintSteps: [
-      "Document safety issues such as locked exits, exposed wiring, or illegal construction.",
-      "Inform your housing society or building management in writing.",
-      "If they do not act, escalate to the local municipal authority or fire department.",
-      "In case of immediate danger (sparks, smoke, or fire), evacuate and call the fire service.",
+    complaintStepKeys: [
+      "awareness.topics.buildings.complaintSteps.0",
+      "awareness.topics.buildings.complaintSteps.1",
+      "awareness.topics.buildings.complaintSteps.2",
+      "awareness.topics.buildings.complaintSteps.3",
     ],
     helplines: [
       { label: "Fire Service", number: "101" },
@@ -287,19 +274,18 @@ export const AWARENESS_TOPICS: AwarenessTopic[] = [
   },
   {
     id: "safety",
-    label: "Public Safety & Crowd Spaces",
-    summary:
-      "Overcrowded events, unsafe public spaces, and poor lighting increase the risk of crime and accidents.",
-    measures: [
-      "Avoid overcrowded venues without visible emergency exits.",
-      "Prefer well-lit routes and public spaces, especially at night.",
-      "Report broken street lights, unsafe parks, or harassment immediately.",
+    labelKey: "awareness.topics.safety.label",
+    summaryKey: "awareness.topics.safety.summary",
+    measuresKeys: [
+      "awareness.topics.safety.measures.0",
+      "awareness.topics.safety.measures.1",
+      "awareness.topics.safety.measures.2",
     ],
-    complaintSteps: [
-      "Write down details of unsafe conditions or incidents (place, time, people involved).",
-      "For harassment or crime, call the police or relevant helpline right away.",
-      "Report infrastructure issues like dark streets or broken lights to the municipal body.",
-      "Keep reference numbers of all complaints for follow‑up.",
+    complaintStepKeys: [
+      "awareness.topics.safety.complaintSteps.0",
+      "awareness.topics.safety.complaintSteps.1",
+      "awareness.topics.safety.complaintSteps.2",
+      "awareness.topics.safety.complaintSteps.3",
     ],
     helplines: [
       { label: "Police (Emergency)", number: "100" },

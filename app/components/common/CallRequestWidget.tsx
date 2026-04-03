@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 export function CallRequestWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +9,7 @@ export function CallRequestWidget() {
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export function CallRequestWidget() {
         onClick={() => setIsOpen(true)}
         className="fixed bottom-16 right-5 z-30 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-primary)] shadow-lg ring-1 ring-[var(--color-border-subtle)] transition-transform hover:scale-[1.03]"
       >
-        Talk to Expert
+        {t("call.talkToExpert")}
       </button>
 
       {isOpen && (
@@ -33,10 +35,10 @@ export function CallRequestWidget() {
             <div className="mb-2 flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold text-slate-900">
-                  Request a Call
+                  {t("call.requestCall")}
                 </p>
                 <p className="text-[10px] text-[var(--color-muted)]">
-                  Choose a convenient date and time for a callback.
+                  {t("call.subtitle")}
                 </p>
               </div>
               <button
@@ -51,20 +53,20 @@ export function CallRequestWidget() {
             <form className="space-y-2" onSubmit={handleSubmit}>
               <div className="space-y-1">
                 <label className="block text-[10px] font-medium text-slate-700">
-                  Full name
+                  {t("call.fullName")}
                 </label>
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   className="w-full rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-3 py-1.5 text-xs outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-soft)]"
-                  placeholder="Your name"
+                  placeholder={t("call.yourNamePlaceholder")}
                 />
               </div>
 
               <div className="space-y-1">
                 <label className="block text-[10px] font-medium text-slate-700">
-                  Phone number
+                  {t("call.phoneNumber")}
                 </label>
                 <input
                   type="tel"
@@ -78,7 +80,7 @@ export function CallRequestWidget() {
               <div className="flex gap-2">
                 <div className="flex-1 space-y-1">
                   <label className="block text-[10px] font-medium text-slate-700">
-                    Preferred date
+                    {t("call.preferredDate")}
                   </label>
                   <input
                     type="date"
@@ -89,7 +91,7 @@ export function CallRequestWidget() {
                 </div>
                 <div className="flex-1 space-y-1">
                   <label className="block text-[10px] font-medium text-slate-700">
-                    Preferred time
+                    {t("call.preferredTime")}
                   </label>
                   <input
                     type="time"
@@ -105,7 +107,7 @@ export function CallRequestWidget() {
                 disabled={!canSubmit}
                 className="mt-1 w-full rounded-xl bg-[var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white shadow-sm disabled:opacity-60"
               >
-                Request Call
+                {t("call.requestCall")}
               </button>
             </form>
           </div>

@@ -1,11 +1,14 @@
  "use client";
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AppShell } from "../components/layout/AppShell";
 import { EMERGENCY_CONTACTS } from "../constants/data";
+import { EMERGENCY_PAGE_CONTENT } from "../content/staticPages";
 
 export default function EmergencyPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation();
 
   const query = searchQuery.toLowerCase().trim();
   const filtered = EMERGENCY_CONTACTS.filter(
@@ -19,12 +22,9 @@ export default function EmergencyPage() {
       <section className="flex flex-1 flex-col bg-[var(--background)] px-4 py-6 md:px-8">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-6 text-sm text-[var(--color-muted)] shadow-sm">
           <h1 className="text-lg font-semibold text-slate-900">
-            National Emergency Contacts
+            {t(EMERGENCY_PAGE_CONTENT.titleKey)}
           </h1>
-          <p>
-            These numbers are for immediate help. Call the most relevant one if
-            you or someone near you is in danger or needs urgent assistance.
-          </p>
+          <p>{t(EMERGENCY_PAGE_CONTENT.introKey)}</p>
 
           <ul className="mt-2 space-y-2 text-sm">
             {(query ? filtered : EMERGENCY_CONTACTS).map((item) => (
@@ -44,9 +44,7 @@ export default function EmergencyPage() {
           </ul>
 
           <p className="mt-4 text-xs text-[var(--color-muted)]">
-            Tip: If you are unsure which number to call, start with the general
-            emergency or police helpline. Stay calm, clearly describe the
-            situation, and share your location.
+            {t(EMERGENCY_PAGE_CONTENT.tipKey)}
           </p>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SIDEBAR_ITEMS } from "../../constants/data";
+import { useTranslation } from "react-i18next";
 
 type MobileSidebarProps = {
   isOpen: boolean;
@@ -11,6 +12,7 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   if (!isOpen) return null;
 
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
     <div className="fixed inset-0 z-40 flex md:hidden">
@@ -28,10 +30,10 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
             </div>
             <div>
               <p className="text-sm font-semibold tracking-tight text-slate-900">
-                Complaint Guide
+                {t("app.title")}
               </p>
               <p className="text-xs text-[var(--color-muted)]">
-                Navigate groups & info
+                {t("app.subtitle")}
               </p>
             </div>
           </div>
@@ -57,13 +59,13 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-xs">
               🏠
             </span>
-            <span>General Info</span>
+            <span>{t("nav.generalInfo")}</span>
           </Link>
           <Link
-            href="/awareness"
+            href="/awareness/forest"
             onClick={onClose}
             className={`flex items-center gap-2 rounded-xl px-3 py-2 ${
-              pathname === "/awareness"
+              pathname === "/awareness" || pathname.startsWith("/awareness/")
                 ? "bg-[var(--color-surface)] text-slate-900 shadow-sm"
                 : "text-slate-700 hover:bg-[var(--color-primary-soft)]/70"
             }`}
@@ -71,7 +73,7 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-xs">
               🌍
             </span>
-            <span>Awareness</span>
+            <span>{t("nav.awareness")}</span>
           </Link>
           <Link
             href="/emergency"
@@ -85,13 +87,13 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-xs">
               📞
             </span>
-            <span>Emergency Contacts</span>
+            <span>{t("nav.emergencyContacts")}</span>
           </Link>
         </nav>
 
         {/* Groups */}
         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-          Groups
+          {t("nav.groups")}
         </p>
         <nav className="space-y-1 text-sm font-medium text-slate-700">
           {SIDEBAR_ITEMS.map((item) => {
@@ -108,7 +110,7 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                     : "text-slate-700 hover:bg-[var(--color-primary-soft)]"
                 }`}
               >
-                <span>{item.label}</span>
+                <span>{t(item.labelKey)}</span>
                 {isActive && (
                   <span className="h-2 w-2 rounded-full bg-[var(--color-primary)]" />
                 )}

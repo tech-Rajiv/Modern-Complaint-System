@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SIDEBAR_ITEMS } from "../../constants/data";
+import { useTranslation } from "react-i18next";
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   return (
-    <aside className="hidden w-64 flex-shrink-0 flex-col border-r border-[var(--color-border-subtle)] bg-[var(--color-sidebar-bg)] px-4 py-6 md:flex">
+    <aside className="sticky top-0 hidden h-screen w-64 flex-shrink-0 flex-col border-r border-[var(--color-border-subtle)] bg-[var(--color-sidebar-bg)] px-4 py-6 md:flex">
       {/* App identity */}
       <div className="mb-6 flex items-center gap-2">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--color-primary)] text-sm font-semibold text-white">
@@ -37,10 +39,10 @@ export function Sidebar() {
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-xs">
             🏠
           </span>
-          <span>General Info</span>
+          <span>{t("nav.generalInfo")}</span>
         </Link>
         <Link
-          href="/awareness"
+          href="/awareness/forest"
           className={`flex items-center gap-2 rounded-xl px-3 py-2 ${
             pathname === "/awareness" || pathname.startsWith("/awareness/")
               ? "bg-[var(--color-surface)] text-slate-900 shadow-sm"
@@ -50,7 +52,7 @@ export function Sidebar() {
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-xs">
             🌍
           </span>
-          <span>Awareness</span>
+          <span>{t("nav.awareness")}</span>
         </Link>
         <Link
           href="/emergency"
@@ -63,13 +65,13 @@ export function Sidebar() {
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-50 text-xs">
             📞
           </span>
-          <span>Emergency Contacts</span>
+          <span>{t("nav.emergencyContacts")}</span>
         </Link>
       </nav>
 
       {/* Groups */}
       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-        Groups
+        {t("nav.groups")}
       </p>
       <nav className="space-y-1 text-sm font-medium text-slate-700">
         {SIDEBAR_ITEMS.map((item) => {
@@ -92,7 +94,7 @@ export function Sidebar() {
                 {item.key === "child" && "👶"}
                 {item.key === "senior" && "👴"}
               </span>
-              <span>{item.label}</span>
+              <span>{t(item.labelKey)}</span>
             </Link>
           );
         })}
@@ -100,12 +102,12 @@ export function Sidebar() {
 
       {/* Quick links */}
       <div className="mt-6 border-t border-[var(--color-border-subtle)] pt-4 text-xs text-slate-600">
-        <p className="mb-2 font-semibold">Quick Links</p>
+        <p className="mb-2 font-semibold">{t("nav.quickLinks")}</p>
         <button className="block w-full text-left text-sky-700 hover:underline">
-          Find Nearest Police Station
+          {t("nav.findNearestPoliceStation")}
         </button>
         <button className="mt-1 block w-full text-left text-sky-700 hover:underline">
-          Legal Aid NGOs
+          {t("nav.legalAidNgos")}
         </button>
       </div>
     </aside>

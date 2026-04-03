@@ -1,6 +1,7 @@
  "use client";
 
 import { EMERGENCY_CONTACTS } from "../../constants/data";
+import { useTranslation } from "react-i18next";
 
 type EmergencyModalProps = {
   isOpen: boolean;
@@ -9,6 +10,7 @@ type EmergencyModalProps = {
 
 export function EmergencyModal({ isOpen, onClose }: EmergencyModalProps) {
   if (!isOpen) return null;
+  const { t } = useTranslation();
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 px-4">
@@ -16,10 +18,10 @@ export function EmergencyModal({ isOpen, onClose }: EmergencyModalProps) {
         <div className="mb-3 flex items-center justify-between">
           <div>
             <h2 className="text-sm font-semibold text-slate-900">
-              Emergency Contacts
+              {t("emergency.modalTitle")}
             </h2>
             <p className="text-xs text-[var(--color-muted)]">
-              Call these numbers immediately in case of danger.
+              {t("emergency.modalSubtitle")}
             </p>
           </div>
           <button

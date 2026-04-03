@@ -25,7 +25,7 @@ export function TopHeader({
             type="button"
             aria-label="Open menu"
             onClick={onOpenMobileSidebar}
-            className="mr-1 flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] text-slate-700 shadow-sm md:hidden"
+            className="mr-1 px-2 flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] text-slate-700 shadow-sm md:hidden"
           >
             <span className="flex flex-col gap-0.5">
               <span className="block h-[1.5px] w-4 rounded-full bg-slate-700" />
@@ -40,6 +40,12 @@ export function TopHeader({
             SIMPLY<span className="text-blue-400">LAW</span>
           </p>
         </div>
+          </div>
+          <div className="flex w-full items-center justify-end">
+            <button onClick={onOpenSos} className="img" >
+
+            <Image src="/group/emergency-contact/emergency-contact.png" alt="SIMPLY LAW" className="rounded-lg" width={24} height={24} />
+            </button>
           </div>
         </div>
 
@@ -56,7 +62,7 @@ export function TopHeader({
               ⌘K
             </span>
           </div>
-          <div className="hidden items-center gap-1 rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-0.5 text-[10px] font-medium text-slate-600 md:flex">
+          <div className=" items-center gap-1 rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-0.5 text-[10px] font-medium text-slate-600 md:flex">
             {[
               { code: "en", label: "EN" },
               { code: "hi", label: "हिं" },
@@ -84,7 +90,7 @@ export function TopHeader({
           <button
             type="button"
             onClick={onOpenSos}
-            className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-red-700"
+            className=" hidden md:inline-flex items-center gap-2 rounded-xl bg-red-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-red-700"
           >
             {t("header.emergencySos")}
           </button>

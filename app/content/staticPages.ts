@@ -1,3 +1,4 @@
+import image from "next/image";
 import type { IssueConfig } from "../components/topic/IssueList";
 
 export const HOME_PAGE_CONTENT = {
@@ -21,6 +22,7 @@ export const WOMEN_TOPICS: IssueConfig[] = [
       { label: "Domestic Violence Helpline", number: "181" },
     ],
     complaintHref: "/women/harassment/complaint",
+    image: "/topics/harassment/badTouchWomenShoulder.png",
   },
   {
     id: "obscene-messages",
@@ -31,6 +33,7 @@ export const WOMEN_TOPICS: IssueConfig[] = [
       { label: "Cyber Crime Helpline", number: "1930" },
     ],
     complaintHref: "/women/obscene-messages/complaint",
+    image: "/topics/harassment/badMessageOnline.png",
   },
   {
     id: "verbal-abuse-street",
@@ -41,6 +44,7 @@ export const WOMEN_TOPICS: IssueConfig[] = [
       { label: "Police (Emergency)", number: "100" },
     ],
     complaintHref: "/women/verbal-abuse/complaint",
+    image: "/topics/harassment/verbalAbuse.png",
   },
 ];
 

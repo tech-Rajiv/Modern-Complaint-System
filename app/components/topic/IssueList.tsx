@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import type { Helpline } from "../../constants/data";
+import Image from "next/image";
 
 export type IssueConfig = {
   id: string;
@@ -8,6 +9,7 @@ export type IssueConfig = {
   summary: string;
   helplines: Helpline[];
   complaintHref: string;
+  image: string;
 };
 
 type IssueListProps = {
@@ -18,6 +20,7 @@ export function IssueList({ issues }: IssueListProps) {
   if (!issues.length) return null;
   const { t } = useTranslation();
 
+  console.log(issues);
   return (
     <div className="space-y-4">
       {issues.map((issue) => (
@@ -34,7 +37,11 @@ export function IssueList({ issues }: IssueListProps) {
                 {t(issue.summary)}
               </p>
             </div>
-            <div className="h-20 w-full rounded-xl border border-dashed border-[var(--color-border-subtle)] bg-[var(--background)] md:h-24 md:w-40" />
+            <div className="h-20 w-full mb-3 flex items-center justify-center md:h-24 md:w-40" >
+            {/* <div className="h-20 w-full rounded-xl border border-dashed border-[var(--color-border-subtle)] bg-[var(--background)] md:h-24 md:w-40" > */}
+
+            <Image src={issue.image} alt={issue.title} width={100} height={100} />
+            </div>
           </div>
 
           <div className="mt-3 space-y-2 text-sm">

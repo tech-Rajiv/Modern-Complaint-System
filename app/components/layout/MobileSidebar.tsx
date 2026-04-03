@@ -2,6 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SIDEBAR_ITEMS } from "../../constants/data";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 const groupIcon = (key: string) => {
   if (key === "women") return "👩";
@@ -39,24 +40,14 @@ export function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
         className="h-full flex-1 bg-black/20 backdrop-blur-[1px]"
       />
       <div className="h-full w-72 flex-shrink-0 border-l border-[var(--color-border-subtle)] bg-[var(--color-sidebar-bg)] px-4 py-6 shadow-xl">
-        <div className="mb-4 overflow-hidden rounded-3xl border border-[var(--color-border-subtle)] bg-white shadow-sm">
+        <div className="mb-4 overflow-hidden ">
           <div className="relative px-4 py-4">
-            <div className="absolute inset-0 opacity-90 [background:linear-gradient(135deg,#e0f2ff_0%,#ffffff_45%,#e8fff6_100%)]" />
+            {/* <div className="absolute inset-0 opacity-90 " /> */}
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-sky-200/40 blur-2xl" />
             <div className="absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-emerald-200/30 blur-2xl" />
-
-            <div className="relative flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-white shadow-sm ring-1 ring-[var(--color-border-subtle)]">
-                <span className="text-xl">🛡️</span>
-              </div>
-              <div className="min-w-0">
-                <p className="truncate text-sm font-extrabold tracking-tight text-slate-900">
-                  {t("app.title")}
-                </p>
-                <p className="truncate text-xs text-slate-600">
-                  {t("app.subtitle")}
-                </p>
-              </div>
+            <div className="flex flex-col items-center justify-center">
+              <Image src="/logo/logo-sidebar.png" alt="SIMPLY LAW" className="rounded-lg" width={80} height={80} />
+              {/* <p className="text-xs mt-2 ">Know your rights, understand your laws</p> */}
             </div>
           </div>
         </div>

@@ -51,29 +51,20 @@ function AwarenessTabs() {
 }
 
 export function AwarenessTopicPage({ topicId }: AwarenessTopicPageProps) {
-  const [searchQuery, setSearchQuery] = useState("");
   const { t } = useTranslation();
 
   const topic =
     AWARENESS_TOPICS.find((t) => t.id === topicId) ?? AWARENESS_TOPICS[0];
 
-  const query = searchQuery.toLowerCase().trim();
 
   const measuresText = topic.measuresKeys.map((k) => t(k));
   const stepsText = topic.complaintStepKeys.map((k) => t(k));
 
-  const visibleMeasures =
-    query.length === 0
-      ? measuresText
-      : measuresText.filter((m) => m.toLowerCase().includes(query));
-
-  const visibleSteps =
-    query.length === 0
-      ? stepsText
-      : stepsText.filter((s) => s.toLowerCase().includes(query));
+  const visibleMeasures = measuresText;
+  const visibleSteps = stepsText;
 
   return (
-    <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <AppShell >
       <section className="flex flex-1 flex-col bg-[var(--background)] px-4 py-6 md:px-8">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-5">
           <AwarenessTabs />

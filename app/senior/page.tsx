@@ -14,7 +14,6 @@ import { CategoryContent } from "../components/category/CategoryContent";
 const CATEGORY_ID = "senior";
 
 export default function SeniorPage() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeTab] = useState<HeaderTab>(HEADER_TABS[0]);
 
   const category = CATEGORY_DATA.find(
@@ -22,7 +21,7 @@ export default function SeniorPage() {
   ) as CategoryData;
 
   return (
-    <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <AppShell >
       <div className="px-4 pt-4 md:px-8">
         <div className="mx-auto w-full max-w-5xl">
           <CategoryTabs basePath="/senior" />
@@ -31,7 +30,6 @@ export default function SeniorPage() {
       <CategoryContent
         category={category}
         activeTab={activeTab}
-        searchQuery={searchQuery}
         section="overview"
       />
     </AppShell>

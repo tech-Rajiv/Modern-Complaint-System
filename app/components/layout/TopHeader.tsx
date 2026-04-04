@@ -3,15 +3,11 @@ import i18n from "../../i18n/i18n";
 import Image from "next/image";
 
 type TopHeaderProps = {
-  searchQuery: string;
-  onSearchChange: (value: string) => void;
   onOpenSos: () => void;
   onOpenMobileSidebar: () => void;
 };
 
 export function TopHeader({
-  searchQuery,
-  onSearchChange,
   onOpenSos,
   onOpenMobileSidebar,
 }: TopHeaderProps) {
@@ -53,8 +49,6 @@ export function TopHeader({
           <div className="relative flex-1 md:w-64">
             <input
               type="search"
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
               placeholder={t("header.searchPlaceholder")}
               className="w-full rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-3 py-2 text-sm outline-none ring-0 placeholder:text-[var(--color-muted)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-soft)]"
             />

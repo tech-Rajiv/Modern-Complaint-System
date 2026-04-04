@@ -7,18 +7,12 @@ import { EMERGENCY_CONTACTS } from "../constants/data";
 import { EMERGENCY_PAGE_CONTENT } from "../content/staticPages";
 
 export default function EmergencyPage() {
-  const [searchQuery, setSearchQuery] = useState("");
   const { t } = useTranslation();
 
-  const query = searchQuery.toLowerCase().trim();
-  const filtered = EMERGENCY_CONTACTS.filter(
-    (c) =>
-      c.label.toLowerCase().includes(query) ||
-      c.number.toLowerCase().includes(query),
-  );
+
 
   return (
-    <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <AppShell >
       <section className="flex flex-1 flex-col bg-[var(--background)] px-4 py-6 md:px-8">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-6 text-sm text-[var(--color-muted)] shadow-sm">
           <h1 className="text-lg font-semibold text-slate-900">
@@ -27,7 +21,7 @@ export default function EmergencyPage() {
           <p>{t(EMERGENCY_PAGE_CONTENT.introKey)}</p>
 
           <ul className="mt-2 space-y-2 text-sm">
-            {(query ? filtered : EMERGENCY_CONTACTS).map((item) => (
+            {EMERGENCY_CONTACTS.map((item) => (
               <li
                 key={item.label}
                 className="flex items-center justify-between rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-primary-soft)]/60 px-4 py-2"

@@ -4,33 +4,21 @@ import type { CategoryData, HeaderTab } from "../../constants/data";
 type CategoryContentProps = {
   category: CategoryData;
   activeTab: HeaderTab;
-  searchQuery: string;
   section?: "overview" | "rights" | "laws" | "complaint";
 };
 
 export function CategoryContent({
   category,
   activeTab,
-  searchQuery,
   section = "overview",
 }: CategoryContentProps) {
   const { t } = useTranslation();
-  const query = searchQuery.toLowerCase().trim();
 
   const rightsText = category.rightsKeys.map((k) => t(k));
   const lawsText = category.laws.map((l) => ({
     code: t(l.codeKey),
     description: t(l.descriptionKey),
   }));
-
-  const filteredRights = rightsText.filter((r) =>
-    r.toLowerCase().includes(query),
-  );
-  const filteredLaws = lawsText.filter(
-    (l) =>
-      l.code.toLowerCase().includes(query) ||
-      l.description.toLowerCase().includes(query),
-  );
 
   return (
     <section className="flex flex-1 flex-col bg-[var(--background)] px-4 py-6 md:px-8">
@@ -103,7 +91,7 @@ export function CategoryContent({
               Simple explanations of key protections for this group.
             </p>
             <ul className="space-y-2 text-sm">
-              {(query ? filteredRights : rightsText).map((right, idx) => (
+              {rightsText.map((right, idx) => (
                 <li
                   key={idx}
                   className="flex gap-2 rounded-xl bg-[var(--color-primary-soft)]/60 px-3 py-2"
@@ -126,7 +114,7 @@ export function CategoryContent({
               Important laws in simple language.
             </p>
             <ul className="space-y-2 text-sm">
-              {(query ? filteredLaws : lawsText).map((law) => (
+              {lawsText.map((law) => (
                 <li
                   key={law.code}
                   className="rounded-xl bg-[var(--color-primary-soft)]/40 px-3 py-2"

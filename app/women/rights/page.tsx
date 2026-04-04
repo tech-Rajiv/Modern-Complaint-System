@@ -7,19 +7,18 @@ import { CategoryContent } from "../../components/category/CategoryContent";
 import { CATEGORY_DATA, type CategoryData, HEADER_TABS, type HeaderTab } from "../../constants/data";
 
 export default function WomenRightsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeTab] = useState<HeaderTab>(HEADER_TABS[0]);
 
   const category = CATEGORY_DATA.find((c) => c.id === "women") as CategoryData;
 
   return (
-    <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <AppShell >
       <div className="px-4 pt-4 md:px-8">
         <div className="mx-auto w-full max-w-5xl">
           <CategoryTabs basePath="/women" />
         </div>
       </div>
-      <CategoryContent category={category} activeTab={activeTab} searchQuery={searchQuery} section="rights" />
+      <CategoryContent category={category} activeTab={activeTab} section="rights" />
     </AppShell>
   );
 }

@@ -12,13 +12,12 @@ import {
 } from "../../constants/data";
 
 export default function MenLawsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeTab] = useState<HeaderTab>(HEADER_TABS[0]);
 
   const category = CATEGORY_DATA.find((c) => c.id === "men") as CategoryData;
 
   return (
-    <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <AppShell >
       <div className="px-4 pt-4 md:px-8">
         <div className="mx-auto w-full max-w-5xl">
           <CategoryTabs basePath="/men" />
@@ -27,7 +26,6 @@ export default function MenLawsPage() {
       <CategoryContent
         category={category}
         activeTab={activeTab}
-        searchQuery={searchQuery}
         section="laws"
       />
     </AppShell>

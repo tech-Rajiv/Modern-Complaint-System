@@ -17,7 +17,6 @@ import { useTranslation } from "react-i18next";
 const CATEGORY_ID = "women";
 
 export default function WomenPage() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeTab] = useState<HeaderTab>(HEADER_TABS[0]);
   const { t } = useTranslation();
 
@@ -28,7 +27,7 @@ export default function WomenPage() {
   const issues: IssueConfig[] = WOMEN_TOPICS;
 
   return (
-    <AppShell searchQuery={searchQuery} onSearchChange={setSearchQuery}>
+    <AppShell >
       <div className="px-4 pt-4 md:px-8">
         <div className="mx-auto w-full max-w-5xl">
           <CategoryTabs basePath="/women" />
@@ -37,7 +36,6 @@ export default function WomenPage() {
       <CategoryContent
         category={category}
         activeTab={activeTab}
-        searchQuery={searchQuery}
         section="overview"
       />
       <div className="mt-4 px-4 pb-6 md:px-8">
